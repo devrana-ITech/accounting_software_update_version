@@ -1,0 +1,223 @@
+[09-Oct-2025 16:07:45 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'comm_deduction' in 'field list' in /home4/bangagar/public_html/fms/classes/Master.php:469
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(469): mysqli->query('UPDATE `journal...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1147): Master->save_journal()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 469
+[09-Oct-2025 16:11:17 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'comm_deduction' in 'field list' in /home4/bangagar/public_html/fms/classes/Master.php:469
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(469): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1147): Master->save_journal()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 469
+[09-Oct-2025 23:45:39 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[09-Oct-2025 23:45:39 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[09-Oct-2025 23:45:39 Asia/Manila] PHP Warning:  Undefined variable $sql_2 in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[09-Oct-2025 23:45:39 Asia/Manila] PHP Fatal error:  Uncaught ValueError: mysqli::query(): Argument #1 ($query) cannot be empty in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[09-Oct-2025 23:46:31 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[09-Oct-2025 23:46:31 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[09-Oct-2025 23:46:31 Asia/Manila] PHP Warning:  Undefined variable $sql_2 in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[09-Oct-2025 23:46:31 Asia/Manila] PHP Fatal error:  Uncaught ValueError: mysqli::query(): Argument #1 ($query) cannot be empty in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[09-Oct-2025 23:48:33 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[09-Oct-2025 23:48:33 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[09-Oct-2025 23:48:33 Asia/Manila] PHP Warning:  Undefined variable $sql_2 in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[09-Oct-2025 23:48:33 Asia/Manila] PHP Fatal error:  Uncaught ValueError: mysqli::query(): Argument #1 ($query) cannot be empty in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[12-Oct-2025 19:14:50 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[12-Oct-2025 19:14:50 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[12-Oct-2025 19:14:50 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[12-Oct-2025 19:14:50 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[12-Oct-2025 19:14:50 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[13-Oct-2025 12:57:31 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[13-Oct-2025 12:57:31 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[13-Oct-2025 12:57:31 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[13-Oct-2025 12:57:31 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[13-Oct-2025 12:57:31 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[14-Oct-2025 11:36:49 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[14-Oct-2025 11:36:49 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[14-Oct-2025 11:36:49 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[14-Oct-2025 11:36:49 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[14-Oct-2025 11:36:49 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[14-Oct-2025 15:41:20 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[22-Oct-2025 19:29:33 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:29:33 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:29:33 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:29:33 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:29:33 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[22-Oct-2025 19:30:13 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:30:13 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:30:13 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:30:13 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:30:13 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[22-Oct-2025 19:31:24 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:31:24 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:31:24 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:31:24 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:31:24 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[22-Oct-2025 19:44:41 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:44:41 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:44:41 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:44:41 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:44:41 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[22-Oct-2025 19:44:43 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:44:43 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[22-Oct-2025 19:44:43 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:44:43 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[22-Oct-2025 19:44:43 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[23-Oct-2025 12:38:11 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Oct-2025 12:38:11 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Oct-2025 12:38:11 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[23-Oct-2025 12:38:11 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[23-Oct-2025 12:38:11 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[23-Oct-2025 19:24:46 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Oct-2025 19:24:46 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Oct-2025 19:24:46 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[23-Oct-2025 19:24:46 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[23-Oct-2025 19:24:46 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[23-Oct-2025 19:25:44 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Oct-2025 19:25:44 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Oct-2025 19:25:44 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[23-Oct-2025 19:25:44 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[23-Oct-2025 19:25:44 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[23-Oct-2025 19:27:27 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Oct-2025 19:27:27 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Oct-2025 19:27:27 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[23-Oct-2025 19:27:27 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 637
+[23-Oct-2025 19:27:27 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:650
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(650): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1151): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 650
+[30-Oct-2025 17:12:33 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[30-Oct-2025 17:12:33 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[30-Oct-2025 17:12:33 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 638
+[30-Oct-2025 17:12:33 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 638
+[30-Oct-2025 17:12:33 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:651
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(651): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1152): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 651
+[30-Oct-2025 19:08:34 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[30-Oct-2025 19:08:34 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[30-Oct-2025 19:08:34 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 638
+[30-Oct-2025 19:08:34 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 638
+[30-Oct-2025 19:08:34 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:651
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(651): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1152): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 651
+[03-Nov-2025 12:47:24 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:651
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(651): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1152): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 651
+[03-Nov-2025 12:47:41 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:651
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(651): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1152): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 651
+[05-Nov-2025 18:39:46 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[05-Nov-2025 18:39:46 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[05-Nov-2025 18:39:46 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 638
+[05-Nov-2025 18:39:46 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 638
+[05-Nov-2025 18:39:46 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:651
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(651): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1152): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 651
+[09-Nov-2025 14:59:19 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:651
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(651): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1152): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 651
+[23-Nov-2025 13:10:15 Asia/Manila] PHP Warning:  Undefined variable $prefix in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Nov-2025 13:10:15 Asia/Manila] PHP Warning:  Undefined variable $code1 in /home4/bangagar/public_html/fms/classes/Master.php on line 631
+[23-Nov-2025 13:10:15 Asia/Manila] PHP Warning:  Undefined variable $user_id in /home4/bangagar/public_html/fms/classes/Master.php on line 638
+[23-Nov-2025 13:10:15 Asia/Manila] PHP Warning:  Undefined variable $year_id in /home4/bangagar/public_html/fms/classes/Master.php on line 638
+[23-Nov-2025 13:10:15 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`bangagar_fms`.`journal_entries`, CONSTRAINT `journal_entries_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL) in /home4/bangagar/public_html/fms/classes/Master.php:651
+Stack trace:
+#0 /home4/bangagar/public_html/fms/classes/Master.php(651): mysqli->query('INSERT INTO `jo...')
+#1 /home4/bangagar/public_html/fms/classes/Master.php(1152): Master->save_journal_3()
+#2 {main}
+  thrown in /home4/bangagar/public_html/fms/classes/Master.php on line 651
