@@ -320,6 +320,130 @@ Class Master extends DBConnection {
 			$this->settings->set_flashdata('success',$resp['msg']);
 		return json_encode($resp);
 	}
+
+
+
+	function save_goods(){
+    extract($_POST);
+    $data = "";
+
+    foreach($_POST as $k => $v){
+        // if($k != 'id'){
+        //     $v = $this->conn->real_escape_string($v);
+        //     if(!empty($data)) $data .= ",";
+        //     $data .= "`{$k}` = '{$v}'";
+        // }
+
+		if(!in_array($k, array('id')) && !is_numeric($k)){
+			if(empty($data)){
+				$data .="$k = '$v'";
+			}else{
+				$data .= ", $k = '$v'";
+			}
+		}
+    }
+
+    if(empty($id)){
+        $sql = "INSERT INTO `goods` SET {$data}";
+    }else{
+        $sql = "UPDATE `goods` SET {$data} WHERE id = '{$id}'";
+    }
+
+    $save = $this->conn->query($sql);
+    if($save){
+        return 1;
+    }
+    return 0;
+}
+
+
+	// function delete_goodsss(){
+	// 	extract($_POST);
+	// 	$id = isset($_POST['id']);
+	// 	$delete = $this->conn->query("DELETE FROM `goods` where id =" .$id);
+	// 	if($delete){
+	// 		return 1;
+	// 	}
+	// 	return 0;
+	// }
+
+// 	function delete_goodss(){
+//     if(!isset($_POST['id'])) return 0;
+
+//     $stmt = $this->conn->prepare("DELETE FROM goods WHERE id = ?");
+//     $stmt->bind_param("i", $_POST['id']);
+//     $stmt->execute();
+
+//     if($stmt->affected_rows > 0){
+//         return 1;
+//     }
+//     return 0;
+// }
+
+	function delete_goods(){
+    if(!isset($_POST['id'])) return 0;
+
+    $id = $this->conn->real_escape_string($_POST['id']);
+
+    $delete = $this->conn->query("DELETE FROM `goods` WHERE id = '{$id}'");
+
+    if($delete){
+        return 1;
+    }
+    return 0;
+}
+
+
+function save_services(){
+	extract($_POST);
+	$data = "";
+
+	    foreach($_POST as $k => $v){
+		if(!in_array($k, array('id')) && !is_numeric($k)){
+			if(empty($data)){
+				$data .="$k = '$v'";
+			}else{
+				$data .= ", $k = '$v'";
+			}
+		}
+    }
+
+	if(empty($id)){
+		$sql = "INSERT INTO `services` set {$data}";
+	}else{
+		$sql = "UPDATE `services` set {$data} where id = '{$id}'";
+	}
+
+
+	$save = $this->conn->query($sql);
+
+	if($save){
+		return 1;
+	}
+		return 0;
+}
+
+
+function delete_services(){
+	if(!isset($_POST['id'])) return 0;
+
+	$id = $this->conn->real_escape_string($_POST['id']);
+
+	$delete = $this->conn->query("DELETE FROM `services` where id = '{$id}'");
+
+	if($delete){
+		return 1;
+	}
+		return 0;
+}
+
+
+
+
+
+
+
+
 	
 	function save_dpp(){
 		$_POST['year_id'] = $this->settings->userdata('year_id');
@@ -1166,6 +1290,18 @@ switch ($action) {
 	break;
 	case 'cancel_journal':
 		echo $Master->cancel_journal();
+	break;
+	case 'save_goods':
+        echo $Master->save_goods();
+	break;
+	case 'delete_goods':
+		echo $Master->delete_goods();
+	break;
+	case 'save_services';
+		echo $Master->save_services();
+	break;
+	case 'delete_services';
+		echo $Master->delete_services();
 	break;
 	default:
 		// echo $sysset->index();
