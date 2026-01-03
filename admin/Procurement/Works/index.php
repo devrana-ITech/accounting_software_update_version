@@ -52,9 +52,9 @@
 </style>
 <div class="card card-outline card-primary">
 	<div class="card-header">
-		<h3 class="card-title">Procurement Goods Entries</h3>
+		<h3 class="card-title">Procurement Works Entries</h3>
 		<div class="card-tools">
-			<button class="btn btn-primary btn-flat btn-sm" id="create_new" type="button"><i class="fa fa-pen-square"></i> Procurement Goods Entries</button>
+			<button class="btn btn-primary btn-flat btn-sm" id="create_new" type="button"><i class="fa fa-pen-square"></i> Procurement Works Entries</button>
 		</div>
 	</div>
 	<div class="card-body">
@@ -76,14 +76,12 @@
 						<th>Package Descrip</th>
 						<th>Unit</th>
 						<th>Quantity</th>
-						<th>Procurement Type</th>
-						<th>Tender App.</th>
-						<th>Source</th>
-						<th>Cost</th>
-						<th>Invitation</th>
-						<th>Signing</th>
-						<th>Completion</th>
-						<th>Procurement Status</th>
+						<th>Conpletion Date</th>
+						<th>Name Address</th>
+						<th>Firm Focal</th>
+						<th>Paid Date</th>
+						<th>Financial Progress</th>
+						<th>Physical Progress</th>
 						<th>Action</th>
 					</tr>
 				</thead>
@@ -99,14 +97,12 @@
 							<td class=""><?php echo ucwords($row['package_descrip']) ?></td>
 							<td class=""><?php echo $row['unit'] ?></td>
 							<td class=""><?php echo $row['quantity'] ?></td>
-							<td class=""><?php echo $row['procuement_type'] ?></td>
-							<td class=""><?php echo $row['tender_approval'] ?></td>
-							<td class=""><?php echo $row['source_funds'] ?></td>
-							<td class=""><?php echo $row['cost_lac'] ?></td>
-							<td class=""><?php echo $row['invitation_tender'] ?></td>
-							<td class=""><?php echo $row['signing_contract'] ?></td>
-							<td class=""><?php echo $row['conpletion_contract'] ?></td>
-							<td class=""><?php echo $row['procurement_status'] ?></td>
+							<td class=""><?php echo $row['conpletion_date'] ?></td>
+							<td class=""><?php echo $row['name_address'] ?></td>
+							<td class=""><?php echo $row['firm_focal'] ?></td>
+							<td class=""><?php echo $row['paid_date'] ?></td>
+							<td class=""><?php echo $row['financial_progress'] ?></td>
+							<td class=""><?php echo $row['physical_progress'] ?></td>
 							
 							
 							<td align="center">
@@ -133,13 +129,13 @@
 <script>
 	$(document).ready(function(){
 		$('#create_new').click(function(){
-			uni_modal("New Procurement Entry","Procurement/Goods/create_works.php",'large')
+			uni_modal("New Procurement Works Entry","Procurement/Works/create_works.php",'large')
 		})
 		$('.edit_data').click(function(){
-			uni_modal("Edit Procurement Entry","Procurement/Goods/create_works.php?id="+$(this).attr('data-id'),"large")
+			uni_modal("Edit Procurement Works Entry","Procurement/Works/create_works.php?id="+$(this).attr('data-id'),"large")
 		})
 		$('.delete_data').click(function(){
-			_conf("Are you sure to delete this procuement Entry permanently?","delete_book",[$(this).attr('data-id')])
+			_conf("Are you sure to delete this Procuement Works Entry permanently?","delete_book",[$(this).attr('data-id')])
 		})
 		
 		$('.table td,.table th').addClass('py-1 px-2 align-middle')
