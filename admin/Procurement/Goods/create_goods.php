@@ -57,54 +57,140 @@ tr
     <form action="" id="goods-form">
         <input type="hidden" name="id" value="<?= isset($meta['id']) ? $meta['id'] : '' ?>">
         <div class="row">
-            <div class="col-md-4 form-group">
+            <div class="col-md-3 form-group">
                 Package No<input style="background-color: #f0dcf7;" type="text" id="package_no" name="package_no" class="form-control form-control-sm form-control-border rounded-0" value="<?=  isset($meta['package_no'])  ? $meta['package_no'] : "" ?>" required>
 			
             </div>
 
-			<div class="col-md-4 form-group">
+			<div class="col-md-3 form-group">
                 Package Description <textarea style="background-color: #f0dcf7;" type="text" id="package_descrip" name="package_descrip" class="form-control form-control-sm form-control-border rounded-0"><?= isset($meta['package_descrip']) ? htmlspecialchars($meta['package_descrip']) : "" ?></textarea>
             </div>
-			<div class="col-md-2 form-group">
+			<div class="col-md-3 form-group">
                 Unit<input style="background-color: #f0dcf7;" type="text" id="unit" name="unit" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['unit'])  ? $meta['unit'] : "" ?>" required>
 				
             </div>
-			<div class="col-md-2 form-group">
+			<div class="col-md-3 form-group">
 				Quantity<input style="background-color: #f0dcf7;" type="text" id="quantity" name="quantity" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['quantity'])  ? $meta['quantity'] : "" ?>" required>
             </div>
 			
 			
 			<div class="col-md-3 form-group">
-                Method Type<input style="background-color: #f0dcf7;" type="text" id="procuement_type" name="procuement_type" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['procuement_type'])  ? $meta['procuement_type'] : "" ?>" required>
-                </select>
+                Method Type Plan<input style="background-color: #f0dcf7;" type="text" id="procuement_type" name="procuement_type1" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['procuement_type1'])  ? $meta['procuement_type1'] : "" ?>" required>
+                
             </div>
 			<div class="col-md-3 form-group">
-                Tender Approval<input style="background-color: #f0dcf7;" type="text" id="tender_approval" name="tender_approval" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['tender_approval'])  ? $meta['tender_approval'] : "" ?>" required>
-                </select>
+                Method Type Actual<input style="background-color: #f0dcf7;" type="text" id="procuement_type" name="procuement_type2" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['procuement_type2'])  ? $meta['procuement_type2'] : "" ?>" required>
+               
             </div>
 			<div class="col-md-3 form-group">
-                Source Funds<input style="background-color: #f0dcf7;" type="text" id="source_funds" name="source_funds" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['source_funds'])  ? $meta['source_funds'] : "" ?>" required>
-                </select>
+                Method Type Deviation<input style="background-color: #f0dcf7;" type="text" id="procuement_type" name="procuement_type3" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['procuement_type3'])  ? $meta['procuement_type3'] : "" ?>" required>
+               
             </div>
 			<div class="col-md-3 form-group">
-                Est. Cost (Lac Taka)<input style="background-color: #f0dcf7;" type="text" id="cost_lac" name="cost_lac" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['cost_lac'])  ? $meta['cost_lac'] : "" ?>" required>
-                </select>
+                Tender Approval Plan<input style="background-color: #f0dcf7;" type="text" id="tender_approval" name="tender_approval1" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['tender_approval1'])  ? $meta['tender_approval1'] : "" ?>" required>
+            </div>
+			<div class="col-md-3 form-group">
+                Tender Approval Actual<input style="background-color: #f0dcf7;" type="text" id="tender_approval" name="tender_approval2" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['tender_approval2'])  ? $meta['tender_approval2'] : "" ?>" required>
+               </div>
+			<div class="col-md-3 form-group">
+                Tender Approval Deviation<input style="background-color: #f0dcf7;" type="text" id="tender_approval" name="tender_approval3" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['tender_approval3'])  ? $meta['tender_approval3'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-3 form-group">
+                Source Funds Plan<input style="background-color: #f0dcf7;" type="text" id="source_funds" name="source_funds1" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['source_funds1'])  ? $meta['source_funds1'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-3 form-group">
+                Source Funds Actual<input style="background-color: #f0dcf7;" type="text" id="source_funds" name="source_funds2" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['source_funds2'])  ? $meta['source_funds2'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-3 form-group">
+                Source Funds Deviation<input style="background-color: #f0dcf7;" type="text" id="source_funds" name="source_funds3" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['source_funds3'])  ? $meta['source_funds3'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-3 form-group">
+                Est. Cost Plan<input style="background-color: #f0dcf7;" type="text" id="cost_lac" name="cost_lac1" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['cost_lac1'])  ? $meta['cost_lac1'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-3 form-group">
+                Est. Cost Actual<input style="background-color: #f0dcf7;" type="text" id="cost_lac" name="cost_lac2" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['cost_lac2'])  ? $meta['cost_lac2'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-3 form-group">
+                Est. Cost Deviation<input style="background-color: #f0dcf7;" type="text" id="cost_lac" name="cost_lac3" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['cost_lac3'])  ? $meta['cost_lac3'] : "" ?>" required>
+               
             </div>
 			<div class="col-md-2 form-group">
-                Invitation Tender<input style="background-color: #f0dcf7;" type="date" id="invitation_tender" name="invitation_tender" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['invitation_tender'])  ? $meta['invitation_tender'] : "" ?>" required>
-                </select>
+                Invitation Prequalific Plan<input style="background-color: #f0dcf7;" type="date" id="cost_lac" name="invitation_prequalific1" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['invitation_prequalific1'])  ? $meta['invitation_prequalific1'] : "" ?>" required>
+               
             </div>
 			<div class="col-md-2 form-group">
-                Signing Contract<input style="background-color: #f0dcf7;" type="date" id="signing_contract" name="signing_contract" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['signing_contract'])  ? $meta['signing_contract'] : "" ?>" required>
-                </select>
+                Invitation Prequalific Actual<input style="background-color: #f0dcf7;" type="date" id="cost_lac" name="invitation_prequalific2" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['invitation_prequalific2'])  ? $meta['invitation_prequalific2'] : "" ?>" required>
+               
             </div>
 			<div class="col-md-2 form-group">
-                Completion Contract<input style="background-color: #f0dcf7;" type="date" id="conpletion_contract" name="conpletion_contract" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['conpletion_contract'])  ? $meta['conpletion_contract'] : "" ?>" required>
-                </select>
+               Invitation Prequalific Deviation<input style="background-color: #f0dcf7;" type="date" id="cost_lac" name="invitation_prequalific3" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['invitation_prequalific3'])  ? $meta['invitation_prequalific3'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-2 form-group">
+                Invitation Tender Plan<input style="background-color: #f0dcf7;" type="date" id="invitation_tender" name="invitation_tender1" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['invitation_tender1'])  ? $meta['invitation_tender1'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-2 form-group">
+                Invitation Tender Actual<input style="background-color: #f0dcf7;" type="date" id="invitation_tender" name="invitation_tender2" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['invitation_tender2'])  ? $meta['invitation_tender2'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-2 form-group">
+                Invitation Tender Deviation<input style="background-color: #f0dcf7;" type="date" id="invitation_tender" name="invitation_tender3" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['invitation_tender3'])  ? $meta['invitation_tender3'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-2 form-group">
+                Signing Contract Plan<input style="background-color: #f0dcf7;" type="date" id="signing_contract" name="signing_contract1" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['signing_contract1'])  ? $meta['signing_contract1'] : "" ?>" required>
+              
+            </div>
+			<div class="col-md-2 form-group">
+                Signing Contract Actual<input style="background-color: #f0dcf7;" type="date" id="signing_contract" name="signing_contract2" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['signing_contract2'])  ? $meta['signing_contract2'] : "" ?>" required>
+              
+            </div>
+			<div class="col-md-2 form-group">
+                Signing Contract Deviation<input style="background-color: #f0dcf7;" type="date" id="signing_contract" name="signing_contract3" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['signing_contract3'])  ? $meta['signing_contract3'] : "" ?>" required>
+              
+            </div>
+			<div class="col-md-2 form-group">
+                Completion Contract Plan<input style="background-color: #f0dcf7;" type="date" id="conpletion_contract" name="conpletion_contract1" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['conpletion_contract1'])  ? $meta['conpletion_contract1'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-2 form-group">
+                Completion Contract Actual<input style="background-color: #f0dcf7;" type="date" id="conpletion_contract" name="conpletion_contract2" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['conpletion_contract2'])  ? $meta['conpletion_contract2'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-2 form-group">
+                Completion Contract Deviation<input style="background-color: #f0dcf7;" type="date" id="conpletion_contract" name="conpletion_contract3" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['conpletion_contract3'])  ? $meta['conpletion_contract3'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-2 form-group">
+                Conpletion Date<input style="background-color: #f0dcf7;" type="date" id="procurement_status" name="conpletion_date" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['conpletion_date'])  ? $meta['conpletion_date'] : "" ?>" required>
+               
             </div>
 			<div class="col-md-4 form-group">
-                Procurement Status<input style="background-color: #f0dcf7;" type="text" id="procurement_status" name="procurement_status" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['procurement_status'])  ? $meta['procurement_status'] : "" ?>" required>
-                </select>
+                Name and Address<input style="background-color: #f0dcf7;" type="text" id="procurement_status" name="name_address" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['name_address'])  ? $meta['name_address'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-4 form-group">
+                Firm Focal<input style="background-color: #f0dcf7;" type="text" id="procurement_status" name="firm_focal" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['firm_focal'])  ? $meta['firm_focal'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-2 form-group">
+                Paid Date<input style="background-color: #f0dcf7;" type="date" id="procurement_status" name="paid_date" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['paid_date'])  ? $meta['paid_date'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-4 form-group">
+                Financial Progress<input style="background-color: #f0dcf7;" type="text" id="procurement_status" name="financial_progress" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['financial_progress'])  ? $meta['financial_progress'] : "" ?>" required>
+               
+            </div>
+			<div class="col-md-4 form-group">
+                Physical Progress<input style="background-color: #f0dcf7;" type="text" id="procurement_status" name="physical_progress" class="form-control form-control-sm rounded-0" value="<?=  isset($meta['physical_progress'])  ? $meta['physical_progress'] : "" ?>" required>
+               
             </div>
 </form>
 			

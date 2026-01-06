@@ -59,7 +59,7 @@
 	</div>
 	<div class="card-body">
         <div class="container-fluid">
-			<table class="table table-bordered table-hover table-striped">
+		<table class="table table-bordered table-hover table-striped">
 				<colgroup>
 					<col width="5%">
 					<col width="10%">
@@ -76,22 +76,19 @@
 						<th>Package Descrip</th>
 						<th>Unit</th>
 						<th>Quantity</th>
-						<th>Procurement Type</th>
-						<th>Tender App.</th>
-						<th>Source</th>
-						<th>Cost</th>
-						<th>Invitation EOI</th>
-						<th>Issue RFP</th>
-						<th>Signing</th>
-						<th>Completion</th>
-						<th>Procurement Status</th>
+						<th>Conpletion Date</th>
+						<th>Name Address</th>
+						<th>Firm Focal</th>
+						<th>Paid Date</th>
+						<th>Financial Progress</th>
+						<th>Physical Progress</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php 
 						$i = 1;
-						$qry = $conn->query("SELECT * FROM `services` order by `id` asc");
+						$qry = $conn->query("SELECT * from `services` order by `id` asc ");
 						while($row = $qry->fetch_assoc()):
 					?>
 						<tr>
@@ -100,15 +97,12 @@
 							<td class=""><?php echo ucwords($row['package_descrip']) ?></td>
 							<td class=""><?php echo $row['unit'] ?></td>
 							<td class=""><?php echo $row['quantity'] ?></td>
-							<td class=""><?php echo $row['procuement_type'] ?></td>
-							<td class=""><?php echo $row['tender_approval'] ?></td>
-							<td class=""><?php echo $row['source_funds'] ?></td>
-							<td class=""><?php echo $row['cost_lac'] ?></td>
-							<td class=""><?php echo $row['invitation_eoi'] ?></td>
-							<td class=""><?php echo $row['issue_rep'] ?></td>
-							<td class=""><?php echo $row['signing_contract'] ?></td>
-							<td class=""><?php echo $row['conpletion_contract'] ?></td>
-							<td class=""><?php echo $row['procurement_status'] ?></td>
+							<td class=""><?php echo $row['conpletion_date'] ?></td>
+							<td class=""><?php echo $row['name_address'] ?></td>
+							<td class=""><?php echo $row['firm_focal'] ?></td>
+							<td class=""><?php echo $row['paid_date'] ?></td>
+							<td class=""><?php echo $row['financial_progress'] ?></td>
+							<td class=""><?php echo $row['physical_progress'] ?></td>
 							
 							
 							<td align="center">
