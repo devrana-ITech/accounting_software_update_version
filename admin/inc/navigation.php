@@ -124,7 +124,7 @@
                      <li class="nav-header">Procurement</li>
 
                 <li class="nav-item">
-                      <a href="<?php echo base_url ?>admin/?page=Procurement/Goods" class="nav-link text-light nav-iufr">
+                      <a href="<?php echo base_url ?>admin/?page=Procurement/Goods" class="nav-link text-light nav-good">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                           Goods
@@ -133,7 +133,7 @@
                     </li>
 
                 <li class="nav-item">
-                  <a href="<?php echo base_url ?>admin/?page=Procurement/Services" class="nav-link text-light nav-iufr">
+                  <a href="<?php echo base_url ?>admin/?page=Procurement/Services" class="nav-link text-light nav-service">
                     <i class="nav-icon fas fa-book"></i>
                     <p>
                       Services
@@ -142,7 +142,7 @@
                 </li>
 
                 <li class="nav-item">
-                      <a href="<?php echo base_url ?>admin/?page=Procurement/Works" class="nav-link text-light nav-iufr">
+                      <a href="<?php echo base_url ?>admin/?page=Procurement/Works" class="nav-link text-light nav-work">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                           Works
@@ -150,11 +150,17 @@
                       </a>
                     </li>
 
-
-
-
                     <li class="nav-header">Reports</li>
 					
+					<li class="nav-item">
+                      <a href="<?php echo base_url ?>admin/?page=PROCM" class="nav-link text-light nav-procurement">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                          Procurement
+                        </p>
+                      </a>
+                    </li>
+
 					<li class="nav-item">
                       <a href="<?php echo base_url ?>admin/?page=iufr" class="nav-link text-light nav-iufr">
                         <i class="nav-icon fas fa-book"></i>
