@@ -92,7 +92,7 @@ table, th, td {
 			<div class="info-box bg-gradient-light shadow">
 				 <span style="width: 100px;" class="info-box-icon bg-gradient-info elevation-1"><i class="fa fa-balance-scale"></i></span>
 				 <span style="padding-left: 5px;" class="info-box-text">
-					 <form  method="post" target="_blank" action="<?php echo base_url ?>admin/JournalMonthlyReport/journal_monthly_report.php" enctype='multipart/form-data'>
+					 <form  method="post" target="_blank" action="<?php echo base_url ?>admin/JournalMonthlyReport/journal_monthly.php" enctype='multipart/form-data'>
 						<div class="form-container">
 							<div class="side-by-side">
 								<select name="year_id" id="year_id" class="from-control" data-width="auto">
