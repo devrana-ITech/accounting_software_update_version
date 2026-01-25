@@ -120,7 +120,7 @@ $html = '
 body{font-family: nikosh}
 
 table, th, td {
-  border: 1px solid #d9d0f7;
+  border: 1px solid #000000;
   border-collapse: collapse;
   width: 100%;
   padding: 5px;

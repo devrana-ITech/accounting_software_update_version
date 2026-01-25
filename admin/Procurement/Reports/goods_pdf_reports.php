@@ -86,11 +86,11 @@ while($row_d = $details->fetch_assoc()){
 	.'<td style="text-align: center;  font-size: 150px;">'.$row_d['invitation_tender1'].'</td>'
 	.'<td style="text-align: center;  font-size: 150px;">'.$row_d['signing_contract1'].'</td>'
 	.'<td style="text-align: center;  font-size: 150px;">'.$row_d['conpletion_contract1'].'</td>'
-	.'<td rowspan="3" style="text-align: center;  font-size: 150px;">'.$row_d['conpletion_date'].'</td>'
 	.'<td rowspan="3" style="text-align: center;  font-size: 150px;">'.$row_d['name_address'].'</td>'
 	.'<td rowspan="3" style="text-align: center;  font-size: 150px;">'.$row_d['firm_focal'].'</td>'
 	.'<td rowspan="3" style="text-align: center;  font-size: 150px;">'.$row_d['paid_date'].'</td>'
-	.'<td rowspan="3" style="text-align: center;  font-size: 150px;">'.$row_d['financial_progress'].'</td></tr>';
+	.'<td rowspan="3" style="text-align: center;  font-size: 150px;">'.$row_d['financial_progress'].'</td></tr>'
+	.'<td rowspan="3" style="text-align: center;  font-size: 150px;">'.$row_d['physical_progress'].'</td></tr>';
 
 	$data .= '<tr>'
 	.'<td style="text-align: center;  font-size: 150px;">Actual</td>'
@@ -173,7 +173,7 @@ $html = '
 body{font-family: nikosh}
 
 table, th, td {
-  border: 1px solid #d9d0f7;
+  border: 1px solid #000000;
   border-collapse: collapse;
   width: 100%;
   padding: 5px;
@@ -197,11 +197,11 @@ table, th, td {
 	  <th rowspan="2" style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>Source of<br>Funds</b></th>
 	  <th rowspan="2" style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>Est. Cost<br>(Lac Taka)</b></th>
 	  <th colspan="4" style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>As per DPP/RDPP Plan and Actual Dates</b></th>
-	  <th rowspan="2" style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>Completion Date (As per contract)</b></th>
 	  <th rowspan="2" style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>Name & Address of Firm awarded</b></th>
 	  <th rowspan="2" style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>Firm Focal Person (Name and Mobile Number)</b></th>
 	  <th rowspan="2" style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>Paid till date</b></th>
 	  <th rowspan="2" style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>Financial Progress</b></th>
+	  <th rowspan="2" style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>Physical Progress</b></th>
 	</tr>
 	<tr>
 	  <th style="background-color: #f3e3fa; text-align: center;  font-size: 150px;"><b>Invitation Prequalification<br>(If Required)</b></th>

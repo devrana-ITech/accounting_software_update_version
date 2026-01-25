@@ -194,6 +194,18 @@
                         </p>
                       </a>
                     </li>
+
+					<li class="nav-item">
+                      <a href="<?php echo base_url ?>admin/?page=JournalDebitReport" class="nav-link text-light nav-journalsDebit">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                          Journal Monthly Report
+                        </p>
+                      </a>
+                    </li>
+
+
+
  <!--                   <li class="nav-item">
                       <a href="<?php echo base_url ?>admin/?page=reports/working_trial_balance" class="nav-link text-light nav-reports_working_trial_balance">
                         <i class="nav-icon fas fa-file"></i>
