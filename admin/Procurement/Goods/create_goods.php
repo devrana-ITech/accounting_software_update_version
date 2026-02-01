@@ -203,11 +203,16 @@ function calculateData(){
     let cost_plan = parseFloat(document.getElementById("cost_plan").value) || 0;
     let cost_actual = parseFloat(document.getElementById("cost_actual").value) || 0;
 
+    if(cost_plan && cost_actual){
+
     let cost_deviation = (cost_plan - cost_actual);
 
     document.getElementById("cost_deviation").value = cost_deviation.toFixed(3);
+    }else{
+         document.getElementById("cost_deviation").value = "";
+    }
 
-
+    
 
     // Prequalific
     let prequalific_plan   = document.getElementById("Prequalific_plan").value;
