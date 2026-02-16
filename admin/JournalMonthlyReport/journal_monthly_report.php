@@ -1,96 +1,79 @@
 <?php
-require_once('./../../config.php');
-require('../../vendor/autoload.php');
+require_once './../../config.php';
+require_once './../../vendor/autoload.php';
 
-$year_id = $_POST['year_id'] ?? '';
-$qtr_id  = $_POST['qtr_id'] ?? '';
+$year_id = isset($_POST['year_id']) ? (int)$_POST['year_id'] : 0;
+$qtr_id  = isset($_POST['qtr_id']) ? (int)$_POST['qtr_id'] : -1;
 $d_type  = $_POST['d_type'] ?? 'Non-DLI';
 
-if(empty($year_id) || empty($qtr_id)){
+if ($year_id <= 0 || $qtr_id < 0) {
     die('Invalid Request');
 }
 
-$monthMap = [
-    1  => 6,   // JUNE
-    2  => 7,   // JULY
-    3  => 8,   // AUGUST
-    4  => 9,   // SEPTEMBER
-    5  => 10,  // OCTOBER
-    6  => 11,  // NOVEMBER
-    7  => 12,  // DECEMBER
-    8  => 1,   // JANUARY
-    9  => 2,   // FEBRUARY
-    10 => 3,   // MARCH
-    11 => 4,   // APRIL
-    12 => 5    // MAY
-];
 
-$month = $monthMap[$qtr_id];
+$fy_stmt = $conn->prepare("SELECT from_date, to_date FROM fy WHERE id = ?");
+$fy_stmt->bind_param("i", $year_id);
+$fy_stmt->execute();
+$fy_result = $fy_stmt->get_result();
 
-if ($year_id == 2){
-    $fy_start = "2021-07-01";
-    $fy_end   = "2022-06-30";
-}elseif ($year_id == 3){
-    $fy_start = "2022-07-01";
-    $fy_end   = "2023-06-30";
-}elseif ($year_id == 4){
-    $fy_start = "2023-07-01";
-    $fy_end   = "2024-06-30";
-}elseif ($year_id == 5){
-    $fy_start = "2024-07-01";
-    $fy_end   = "2025-06-30";
-}elseif ($year_id == 6){
-    $fy_start = "2025-07-01";
-    $fy_end   = "2026-06-30";
-}else{
+if ($fy_result->num_rows === 0) {
     die('Invalid Fiscal Year');
 }
 
+$fy = $fy_result->fetch_assoc();
+$fy_start = $fy['from_date']; 
+$fy_end   = $fy['to_date'];
 
-$month_start = date("Y-m-01", strtotime("$fy_start +".($month)." month"));
+
+$month_start = date("Y-m-01", strtotime("$fy_start +$qtr_id month"));
 $month_end   = date("Y-m-t", strtotime($month_start));
 $month_title = date("F Y", strtotime($month_start));
 
 
-$sql = $conn->query("
+$stmt = $conn->prepare("
     SELECT 
         a.acc_code,
         a.name,
+        journal_date,
         SUM(jt.amount) AS debit_amount
     FROM journal_entries je
     INNER JOIN journal_items jt ON jt.journal_id = je.id
     INNER JOIN account_list a ON a.id = jt.account_id
-    WHERE je.year_id = '$year_id'
-      AND je.dli_type = '$d_type'
+    WHERE je.year_id = ?
+      AND je.dli_type = ?
       AND jt.group_id = 1
-      AND je.journal_date BETWEEN '$month_start' AND '$month_end'
+      AND je.journal_date BETWEEN ? AND ?
     GROUP BY a.id
     ORDER BY a.acc_code ASC
 ");
+
+$stmt->bind_param("isss", $year_id, $d_type, $month_start, $month_end);
+$stmt->execute();
+$result = $stmt->get_result();
 
 
 $data  = '';
 $sn    = 0;
 $total = 0;
 
-while($row = $sql->fetch_assoc()){
+while ($row = $result->fetch_assoc()) {
     $sn++;
     $total += $row['debit_amount'];
 
-    $data .= '
+    $data .= "
     <tr>
-        <td style="text-align:center">'.$sn.'</td>
-        <td style="text-align:center">'.$row['acc_code'].'</td>
-        <td style="text-align:left">'.$row['name'].'</td>
-        <td style="text-align:right">'.number_format($row['debit_amount'],2).'</td>
-    </tr>';
+        <td style='text-align:center'>{$sn}</td>
+        <td style='text-align:center'>{$row['acc_code']}</td>
+        <td style='text-align:left'>{$row['name']}</td>
+        <td style='text-align:right'>" . number_format($row['debit_amount'], 2) . "</td>
+    </tr>";
 }
 
-$data .= '
+$data .= "
 <tr>
-    <td colspan="3" style="text-align:right"><b>Total</b></td>
-    <td style="text-align:right"><b>'.number_format($total,2).'</b></td>
-</tr>';
+    <td colspan='3' style='text-align:right'><b>Total</b></td>
+    <td style='text-align:right'><b>" . number_format($total, 2) . "</b></td>
+</tr>";
 
 
 $pdf = new \Mpdf\Mpdf([

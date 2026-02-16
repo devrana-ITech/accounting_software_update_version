@@ -95,33 +95,35 @@ table, th, td {
 					 <form  method="post" target="_blank" action="<?php echo base_url ?>admin/JournalMonthlyReport/journal_monthly_report.php" enctype='multipart/form-data'>
 						<div class="form-container">
 							<div class="side-by-side">
-								<select name="year_id" id="year_id" class="from-control" data-width="auto">
+								  <select name="year_id" id="year_id" class="form-control">
 									<?php 
-										$year = $conn->query("SELECT * FROM `fy` ORDER BY `id` DESC");
+										$year = $conn->query("SELECT * FROM fy ORDER BY id DESC");
 										while($row = $year->fetch_assoc()):
 									?>
-									<option value="<?= $row['id'] ?>"><?= $row['fy'] ?></option>
+										<option value="<?= $row['id'] ?>">
+											<?= htmlspecialchars($row['fy']) ?>
+										</option>
 									<?php endwhile; ?>
 								</select>
 							</div>
 							<div class="side-by-side">
-								<select name="qtr_id" id="qtr_id" class="from-control" data-width="auto">
-									<option value="6">JUNE</option>
-									<option value="7">JULY</option>
-									<option value="8">AUGUST</option>
-									<option value="9">SEPTEMBER</option>
-									<option value="10">OCTOBER</option>
-									<option value="11">NOVEMBER</option>
-									<option value="12">DECEMBER</option>
-									<option value="1">JANUARY</option>
-									<option value="2">FEBRUARY</option>
-									<option value="3">MARCH</option>
-									<option value="4">APRIL</option>
-									<option value="5">MAY</option>
+								 <select name="qtr_id" id="qtr_id" class="form-control">
+									<option value="0">JULY</option>
+									<option value="1">AUGUST</option>
+									<option value="2">SEPTEMBER</option>
+									<option value="3">OCTOBER</option>
+									<option value="4">NOVEMBER</option>
+									<option value="5">DECEMBER</option>
+									<option value="6">JANUARY</option>
+									<option value="7">FEBRUARY</option>
+									<option value="8">MARCH</option>
+									<option value="9">APRIL</option>
+									<option value="10">MAY</option>
+									<option value="11">JUNE</option>
 								</select>
 							</div>
 							<div class="side-by-side">
-								<select name="d_type" id="d_type" class="from-control" data-width="auto">
+								<select name="d_type" id="d_type" class="form-control" data-width="auto">
 									<option value="Non-DLI">Non-DLI</option>
 									<option value="DLI">DLI</option>
 								</select>
