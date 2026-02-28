@@ -33,7 +33,7 @@ $month_title = date("F Y", strtotime($month_start));
 $stmt = $conn->prepare("
     SELECT 
         a.acc_code,
-        a.name,
+        a.name, SUM(je.dollar) AS dollar,
         journal_date,
         SUM(jt.amount) AS debit_amount
     FROM journal_entries je
@@ -55,10 +55,12 @@ $result = $stmt->get_result();
 $data  = '';
 $sn    = 0;
 $total = 0;
+$dollarTotal = 0;
 
 while ($row = $result->fetch_assoc()) {
     $sn++;
     $total += $row['debit_amount'];
+    $dollarTotal += $row['dollar'];
 
     $data .= "
     <tr>
@@ -66,6 +68,7 @@ while ($row = $result->fetch_assoc()) {
         <td style='text-align:center'>{$row['acc_code']}</td>
         <td style='text-align:left'>{$row['name']}</td>
         <td style='text-align:right'>" . number_format($row['debit_amount'], 2) . "</td>
+        <td style='text-align:right'>" . number_format($row['dollar'], 2) . "</td>
     </tr>";
 }
 
@@ -73,6 +76,7 @@ $data .= "
 <tr>
     <td colspan='3' style='text-align:right'><b>Total</b></td>
     <td style='text-align:right'><b>" . number_format($total, 2) . "</b></td>
+    <td style='text-align:right'><b>" . number_format($dollarTotal, 2) . " $</b></td>
 </tr>";
 
 
@@ -125,6 +129,7 @@ th{
     <th width="20%">Account Code</th>
     <th width="42%">Account Name</th>
     <th width="30%" style="text-align:right">Debit Amount</th>
+    <th width="30%" style="text-align:right">Dollar</th>
 </tr>
 </thead>
 <tbody>

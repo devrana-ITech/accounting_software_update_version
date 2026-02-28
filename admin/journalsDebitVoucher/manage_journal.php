@@ -147,7 +147,7 @@ tr
 		</div>
 		
         <div class="row">
-			<div class="col-md-6 form-group">
+			<div class="col-md-4 form-group">
                 Payee Name<select id="payee_name" name="payee_name" class="from-control form-control-sm select2" data-width="auto" required>
                     <option value="" disabled selected></option>
                     <?php 
@@ -163,6 +163,9 @@ tr
 			
 			<div class="col-md-2 form-group">
                 Gross Amount<input style="background-color: #f0dcf7;" type="number" id="gross_amt" name="gross_amt" class="form-control form-control-sm rounded-0" value="<?= isset($gross_amt) ? $gross_amt : "" ?>" onkeyup="net_pay()" required>
+            </div>
+			<div class="col-md-2 form-group">
+                Dollar<input style="background-color: #f0dcf7;" type="number" id="dollar" name="dollar" class="form-control form-control-sm rounded-0" value="<?= isset($dollar) ? $dollar : "" ?>"  required>
             </div>
 			<div class="col-md-2 form-group">
                 VAT Deduction<input style="background-color: #f0dcf7;" type="number" id="vat_deduction" name="vat_deduction" class="form-control form-control-sm rounded-0" value="<?= isset($vat_deduction) ? $vat_deduction : "0" ?>" onkeyup="net_pay()" required>
