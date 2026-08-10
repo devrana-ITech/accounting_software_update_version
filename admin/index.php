@@ -38,6 +38,14 @@ switch ($action) {
 		$_settings->set_userdata('year_id','6');
 		redirect('admin');
 		break; 
+	case '7':
+		$_settings->set_userdata('fy','2026-2027');
+		$_settings->set_userdata('from_date','2026-07-01');
+		$_settings->set_userdata('to_date','2027-06-30');
+		$_settings->set_userdata('year_id','7');
+		redirect('admin');
+		break; 
+    
 	default:
 		break;
 }

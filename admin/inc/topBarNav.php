@@ -57,9 +57,10 @@
 					<b>Financial Year: <span class="ml-1"><?php echo ucwords($_settings->userdata('fy')) ?></span></b>
 				</button>
 				  <div class="dropdown-menu" role="menu">
+				    <a class="dropdown-item" href="<?php echo base_url.'admin/index.php?page=7' ?>">FY : 2026-27</a>
 				    <a class="dropdown-item" href="<?php echo base_url.'admin/index.php?page=6' ?>">FY : 2025-26</a>
-                    <a class="dropdown-item" href="<?php echo base_url.'admin/index.php?page=5' ?>">FY : 2024-25</a>
-                    <a class="dropdown-item" href="<?php echo base_url.'admin/index.php?page=4' ?>">FY : 2023-24</a>
+            <a class="dropdown-item" href="<?php echo base_url.'admin/index.php?page=5' ?>">FY : 2024-25</a>
+            <a class="dropdown-item" href="<?php echo base_url.'admin/index.php?page=4' ?>">FY : 2023-24</a>
 					<a class="dropdown-item" href="<?php echo base_url.'admin/index.php?page=3' ?>">FY : 2022-23</a>
 					<a class="dropdown-item" href="<?php echo base_url.'admin/index.php?page=2' ?>">FY : 2021-22</a>
                   </div>
