@@ -312,8 +312,19 @@ if ($journals->num_rows > 0){
 	}
 }
 
+$journals = $conn->query("SELECT (case when sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) is null then 0 else sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) end) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join account_list al on al.id = jt.account_id WHERE year_id = 7 and (account_id = 51) and journal_type = 'cv' and dli_type = 'Non-DLI';");
 
-$nondli_total = $nondli_2 + $nondli_3 + $nondli_4 + $nondli_5 + $nondli_6;
+$nondli_7 = 0;
+if ($journals->num_rows > 0){
+	while($row = $journals->fetch_assoc()){
+	   if ($row['Crt'] != 0) {
+			$nondli_7 = $nondli_7 + $row['Crt'];
+	   }
+	}
+}
+
+
+$nondli_total = $nondli_2 + $nondli_3 + $nondli_4 + $nondli_5 + $nondli_6 + $nondli_7;
 
 
 ////////////D L I
@@ -374,14 +385,25 @@ if ($journals->num_rows > 0){
 	   }
 	}
 }
+$journals = $conn->query("SELECT (case when sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) is null then 0 else sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) end) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join account_list al on al.id = jt.account_id WHERE year_id = 7 and (account_id = 51) and journal_type = 'cv' and dli_type = 'DLI';");
 
-$dli_total = $dli_2 + $dli_3 + $dli_4 + $dli_5 + $dli_6;
+$dli_7 = 0;
+if ($journals->num_rows > 0){
+	while($row = $journals->fetch_assoc()){
+	   if ($row['Crt'] != 0) {
+			$dli_7 = $dli_7 + $row['Crt'];
+	   }
+	}
+}
+
+$dli_total = $dli_2 + $dli_3 + $dli_4 + $dli_5 + $dli_6 + $dli_7;
 
 $nondli_dli2 = 0;
 $nondli_dli3 = 0;
 $nondli_dli4 = 0;
 $nondli_dli5 = 0;
 $nondli_dli6 = 0;
+$nondli_dli7 = 0;
 
 $grand_total = 0;
 
@@ -390,8 +412,9 @@ $nondli_dli3 = $nondli_3 + $dli_3;
 $nondli_dli4 = $nondli_4 + $dli_4;
 $nondli_dli5 = $nondli_5 + $dli_5;
 $nondli_dli6 = $nondli_6 + $dli_6;
+$nondli_dli7 = $nondli_7 + $dli_7;
 
-$grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4 + $nondli_dli5 + $nondli_dli6;
+$grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4 + $nondli_dli5 + $nondli_dli6 + $nondli_dli7;
 
 ?>
 
@@ -402,11 +425,12 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4 + $nondli_dli5 + $nond
 			<thead>
 				<tr>
 				  <th class="cl1" style="background-color: #d48104; color: white;"><b>Fund Type</b></th>
-				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2021-22</b></th>
-				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2022-23</b></th>
-				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2023-24</b></th>
-				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2024-25</b></th>
-				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2025-26</b></th>
+				  <th class="cl2" style="background-color: #d48104; color: white;"><b>21-22</b></th>
+				  <th class="cl2" style="background-color: #d48104; color: white;"><b>22-23</b></th>
+				  <th class="cl2" style="background-color: #d48104; color: white;"><b>23-24</b></th>
+				  <th class="cl2" style="background-color: #d48104; color: white;"><b>24-25</b></th>
+				  <th class="cl2" style="background-color: #d48104; color: white;"><b>25-26</b></th>
+				  <th class="cl2" style="background-color: #d48104; color: white;"><b>26-27</b></th>
 				  <th class="cl2" style="background-color: #d48104; color: white;"><b>Total</b></th>
 				</tr>
 			</thead>		  
@@ -418,6 +442,7 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4 + $nondli_dli5 + $nond
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="advances.php?year_id=4&dli_type=Non-DLI" target="_blank"><b><?php if ($nondli_4 <= 0) echo  "--"; else echo number_format($nondli_4, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="advances.php?year_id=5&dli_type=Non-DLI" target="_blank"><b><?php if ($nondli_5 <= 0) echo  "--"; else echo number_format($nondli_5, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="advances.php?year_id=6&dli_type=Non-DLI" target="_blank"><b><?php if ($nondli_6 <= 0) echo  "--"; else echo number_format($nondli_6, 2); ?></b></a></td>
+				  <td class="cl2" style="background-color: #faf5fc;"><a href="advances.php?year_id=7&dli_type=Non-DLI" target="_blank"><b><?php if ($nondli_7 <= 0) echo  "--"; else echo number_format($nondli_7, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="advances.php?year_id=0&dli_type=Non-DLI" target="_blank"><b><?php if ($nondli_total <= 0) echo  "--"; else echo number_format($nondli_total, 2); ?></b></a></td>
 				</tr>
 				<tr>
@@ -427,6 +452,7 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4 + $nondli_dli5 + $nond
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="advances.php?year_id=4&dli_type=DLI" target="_blank"><b><?php if ($dli_4 <= 0) echo  "--"; else echo number_format($dli_4, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="advances.php?year_id=5&dli_type=DLI" target="_blank"><b><?php if ($dli_5 <= 0) echo  "--"; else echo number_format($dli_5, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="advances.php?year_id=6&dli_type=DLI" target="_blank"><b><?php if ($dli_6 <= 0) echo  "--"; else echo number_format($dli_6, 2); ?></b></a></td>
+				  <td class="cl2" style="background-color: #f2ebf5;"><a href="advances.php?year_id=7&dli_type=DLI" target="_blank"><b><?php if ($dli_7 <= 0) echo  "--"; else echo number_format($dli_7, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="advances.php?year_id=0&dli_type=DLI" target="_blank"><b><?php if ($dli_total <= 0) echo  "--"; else echo number_format($dli_total, 2); ?></b></a></td>
 				</tr>
 				<tr>
@@ -436,6 +462,7 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4 + $nondli_dli5 + $nond
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="advances.php?year_id=4&dli_type=0" target="_blank"><b><?php if ($nondli_dli4 <= 0) echo  "--"; else echo number_format($nondli_dli4, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="advances.php?year_id=5&dli_type=0" target="_blank"><b><?php if ($nondli_dli5 <= 0) echo  "--"; else echo number_format($nondli_dli5, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="advances.php?year_id=6&dli_type=0" target="_blank"><b><?php if ($nondli_dli6 <= 0) echo  "--"; else echo number_format($nondli_dli6, 2); ?></b></a></td>
+				  <td class="cl2" style="background-color: #ffe6e6;"><a href="advances.php?year_id=7&dli_type=0" target="_blank"><b><?php if ($nondli_dli7 <= 0) echo  "--"; else echo number_format($nondli_dli7, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="advances.php?year_id=0&dli_type=0" target="_blank"><b><?php echo number_format($grand_total, 2) ?></b></a></td>
 				</tr>
 			</tbody>
@@ -536,7 +563,21 @@ while($row_item = $item_list->fetch_assoc()){
 	}
 }
 
-$nondli_total = $nondli_2 + $nondli_2a + $nondli_3 + $nondli_4 + $nondli_5;
+$nondli_6 = 0;
+$item_list = $conn->query("SELECT * from exp_group where id <= 8;"); 
+while($row_item = $item_list->fetch_assoc()){
+	$item_code = $row_item['id'];
+	$journals = $conn->query("SELECT ((case when sum(case when eg.id = '$item_code' and group_id = 1 and account_id <> 51 and account_id <> 52  then jt.amount end) is null then 0 else sum(case when eg.id = '$item_code' and group_id = 1 and account_id <> 51 and account_id <> 52 then jt.amount end) end) - (case when sum(case when eg.id = '$item_code' and group_id = 4 and account_id <> 51 and account_id <> 52 then jt.amount end) is null then 0 else sum(case when eg.id = '$item_code' and group_id = 4 and account_id <> 51 and account_id <> 52 then jt.amount end) end)) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join exp_group eg on eg.id = je.exp_group WHERE year_id = 7 and eg.id = '$item_code' and dli_type = 'Non-DLI' group by eg.id;");
+	if ($journals->num_rows > 0){
+		while($row = $journals->fetch_assoc()){
+		   if ($row['Crt'] != 0) {
+				$nondli_6 = $nondli_6 + $row['Crt'];
+		   }
+		}
+	}
+}
+
+$nondli_total = $nondli_2 + $nondli_2a + $nondli_3 + $nondli_4 + $nondli_5 + $nondli_6;
 
 
 ////////////D L I
@@ -629,14 +670,30 @@ while($row_item = $item_list->fetch_assoc()){
 	}
 }
 
+$dli_6 = 0;
 
-$dli_total = $dli_2 + $dli_2a + $dli_3 + $dli_4 + $dli_5;
+$item_list = $conn->query("SELECT * from exp_group where id <= 8;"); 
+while($row_item = $item_list->fetch_assoc()){
+	$item_code = $row_item['id'];
+	$journals = $conn->query("SELECT ((case when sum(case when eg.id = '$item_code' and group_id = 1 and account_id <> 51 and account_id <> 52  then jt.amount end) is null then 0 else sum(case when eg.id = '$item_code' and group_id = 1 and account_id <> 51 and account_id <> 52 then jt.amount end) end) - (case when sum(case when eg.id = '$item_code' and group_id = 4 and account_id <> 51 and account_id <> 52 then jt.amount end) is null then 0 else sum(case when eg.id = '$item_code' and group_id = 4 and account_id <> 51 and account_id <> 52 then jt.amount end) end)) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join exp_group eg on eg.id = je.exp_group WHERE year_id = 7 and eg.id = '$item_code' and dli_type = 'DLI' group by eg.id;");
+	if ($journals->num_rows > 0){
+		while($row = $journals->fetch_assoc()){
+		   if ($row['Crt'] != 0) {
+				$dli_6 = $dli_6 + $row['Crt'];
+		   }
+		}
+	}
+}
+
+
+$dli_total = $dli_2 + $dli_2a + $dli_3 + $dli_4 + $dli_5 + $dli_6;
 
 $nondli_dli2 = 0;
 $nondli_dli2a = 0;
 $nondli_dli3 = 0;
 $nondli_dli4 = 0;
 $nondli_dli5 = 0;
+$nondli_dli6 = 0;
 
 $grand_total = 0;
 
@@ -645,8 +702,9 @@ $nondli_dli2a = $nondli_2a + $dli_2a;
 $nondli_dli3 = $nondli_3 + $dli_3;
 $nondli_dli4 = $nondli_4 + $dli_4;
 $nondli_dli5 = $nondli_5 + $dli_5;
+$nondli_dli6 = $nondli_6 + $dli_6;
 
-$grand_total = $nondli_dli2 + $nondli_dli2a + $nondli_dli3 + $nondli_dli4 + $nondli_dli5;
+$grand_total = $nondli_dli2 + $nondli_dli2a + $nondli_dli3 + $nondli_dli4 + $nondli_dli5 + $nondli_dli6;
 
 ?>
 
@@ -664,6 +722,7 @@ $grand_total = $nondli_dli2 + $nondli_dli2a + $nondli_dli3 + $nondli_dli4 + $non
 				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2023-24</b></th>
 				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2024-25</b></th>
 				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2025-26</b></th>
+				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2026-27</b></th>
 				  <th class="cl2" style="background-color: #d48104; color: white;"><b>Total</b></th>
 				</tr>
 			</thead>		  
@@ -674,7 +733,8 @@ $grand_total = $nondli_dli2 + $nondli_dli2a + $nondli_dli3 + $nondli_dli4 + $non
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="nondli_report_pdf.php?year_id=5" target="_blank"><b><?php echo number_format($nondli_2a, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="nondli_report_pdf.php?year_id=2" target="_blank"><b><?php echo number_format($nondli_3, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="nondli_report_pdf.php?year_id=3" target="_blank"><b><?php echo number_format($nondli_4, 2) ?></b></a></td>
-				  <td class="cl2" style="background-color: #faf5fc;"><a href="nondli_report_pdf.php?year_id=6" target="_blank"><b><?php echo number_format($nondli_5, 2) ?></b></a></td>				  
+				  <td class="cl2" style="background-color: #faf5fc;"><a href="nondli_report_pdf.php?year_id=6" target="_blank"><b><?php echo number_format($nondli_5, 2) ?></b></a></td>
+				  <td class="cl2" style="background-color: #faf5fc;"><a href="nondli_report_pdf.php?year_id=7" target="_blank"><b><?php echo number_format($nondli_6, 2) ?></b></a></td>				  
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="nondli_report_pdf.php?year_id=4" target="_blank"><b><?php echo number_format($nondli_total, 2) ?></b></a></td>
 				</tr>
 				<tr>
@@ -684,15 +744,17 @@ $grand_total = $nondli_dli2 + $nondli_dli2a + $nondli_dli3 + $nondli_dli4 + $non
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="dli_report_pdf.php?year_id=2" target="_blank"><b><?php if ($dli_3 <= 0) echo  "--"; else echo number_format($dli_3, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="dli_report_pdf.php?year_id=3" target="_blank"><b><?php if ($dli_4 <= 0) echo  "--"; else echo number_format($dli_4, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="dli_report_pdf.php?year_id=6" target="_blank"><b><?php if ($dli_5 <= 0) echo  "--"; else echo number_format($dli_5, 2); ?></b></a></td>
+				  <td class="cl2" style="background-color: #f2ebf5;"><a href="dli_report_pdf.php?year_id=7" target="_blank"><b><?php if ($dli_6 <= 0) echo  "--"; else echo number_format($dli_6, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="dli_report_pdf.php?year_id=4" target="_blank"><b><?php if ($dli_total <= 0) echo  "--"; else echo number_format($dli_total, 2); ?></b></a></td>
 				</tr>
 				<tr>
 				  <td class="cl1" style="background-color: #ffe6e6;"><b>Total</b></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wb_report_pdf.php?year_id=1" target="_blank"><b><?php echo number_format($nondli_dli2, 2) ?></b></a></td>
-				   <td class="cl2" style="background-color: #ffe6e6;"><a href="wb_report_pdf.php?year_id=5" target="_blank"><b><?php echo number_format($nondli_dli2a, 2) ?></b></a></td>
+				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wb_report_pdf.php?year_id=5" target="_blank"><b><?php echo number_format($nondli_dli2a, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wb_report_pdf.php?year_id=2" target="_blank"><b><?php echo number_format($nondli_dli3, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wb_report_pdf.php?year_id=3" target="_blank"><b><?php echo number_format($nondli_dli4, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wb_report_pdf.php?year_id=6" target="_blank"><b><?php echo number_format($nondli_dli5, 2) ?></b></a></td>
+				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wb_report_pdf.php?year_id=7" target="_blank"><b><?php echo number_format($nondli_dli6, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: red; color: white;"><a style="color: white;" href="wb_report_pdf.php?year_id=4" target="_blank"><b><?php echo number_format($grand_total, 2) ?></b></a></td>
 				</tr>
 			</tbody>
@@ -787,8 +849,22 @@ while($row_item = $item_list->fetch_assoc()){
 	}
 }
 
+$wb5 = 0;
+$item_list = $conn->query("SELECT * from exp_group where id <= 8;"); 
+while($row_item = $item_list->fetch_assoc()){
+	$item_code = $row_item['id'];
+	$journals = $conn->query("SELECT ((case when sum(case when eg.id = '$item_code' and group_id = 1 and account_id <> 51 and account_id <> 52  then jt.amount end) is null then 0 else sum(case when eg.id = '$item_code' and group_id = 1 and account_id <> 51 and account_id <> 52 then jt.amount end) end) - (case when sum(case when eg.id = '$item_code' and group_id = 4 and account_id <> 51 and account_id <> 52 then jt.amount end) is null then 0 else sum(case when eg.id = '$item_code' and group_id = 4 and account_id <> 51 and account_id <> 52 then jt.amount end) end)) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join exp_group eg on eg.id = je.exp_group WHERE year_id = 7 and eg.id = '$item_code' group by eg.id;");
+	if ($journals->num_rows > 0){
+		while($row = $journals->fetch_assoc()){
+		   if ($row['Crt'] != 0) {
+				$wb5 = $wb5 + $row['Crt'];
+		   }
+		}
+	}
+}
 
-$wb_row_total = $wb0 + $wb1 + $wb2 + $wb3 + $wb4;
+
+$wb_row_total = $wb0 + $wb1 + $wb2 + $wb3 + $wb4 + $wb5;
 
 $gob_row_total = 0;
 
@@ -848,9 +924,20 @@ if ($journals->num_rows > 0){
 		}
 	}
 
+$journals = $conn->query("SELECT (case when sum(case when group_id = 1 and account_id <> 51 and account_id <> 52  then jt.amount end) is null then 0 else sum(case when group_id = 1 and account_id <> 51 and account_id <> 52 then jt.amount end) end) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id WHERE year_id = 7 and dli_type = 'GoB';");
+
+$gob5 = 0;
+if ($journals->num_rows > 0){
+		while($row = $journals->fetch_assoc()){
+		   if ($row['Crt'] != 0) {
+				$gob5 = $gob5 + $row['Crt'];
+		   }
+		}
+	}
 
 
-$gob_row_total = $gob0 + $gob1 + $gob2 + $gob3 + $gob4;
+
+$gob_row_total = $gob0 + $gob1 + $gob2 + $gob3 + $gob4 + $gob5;
 
 $col0 = 0;
 $col1 = 0;
@@ -858,12 +945,14 @@ $col2 = 0;
 $col3 = 0;
 $col4 = 0;
 $col4a = 0;
+$col5a = 0;
 
 $col0 = $wb0 + $gob0;
 $col1 = $wb1 + $gob1;
 $col2 = $wb2 + $gob2;
 $col3 = $wb3 + $gob3;
 $col4a = $wb4 + $gob4;
+$col5a = $wb5 + $gob5;
 
 
 $col4 = $gob_row_total + $wb_row_total;
@@ -882,6 +971,7 @@ $col4 = $gob_row_total + $wb_row_total;
 				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2023-24</b></th>
 				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2024-25</b></th>
 				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2025-26</b></th>
+				  <th class="cl2" style="background-color: #d48104; color: white;"><b>2026-27</b></th>
 				  <th class="cl2" style="background-color: #d48104; color: white;"><b>Total</b></th>
 				</tr>
 			</thead>		  
@@ -892,7 +982,8 @@ $col4 = $gob_row_total + $wb_row_total;
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="wb_report_pdf.php?year_id=5" target="_blank"><b><?php echo number_format($wb1, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="wb_report_pdf.php?year_id=2" target="_blank"><b><?php echo number_format($wb2, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="wb_report_pdf.php?year_id=3" target="_blank"><b><?php echo number_format($wb3, 2) ?></b></a></td>
-				  <td class="cl2" style="background-color: #faf5fc;"><a href="wb_report_pdf.php?year_id=6" target="_blank"><b><?php echo number_format($wb4, 2) ?></b></a></td>					  
+				  <td class="cl2" style="background-color: #faf5fc;"><a href="wb_report_pdf.php?year_id=6" target="_blank"><b><?php echo number_format($wb4, 2) ?></b></a></td>		
+				  <td class="cl2" style="background-color: #faf5fc;"><a href="wb_report_pdf.php?year_id=7" target="_blank"><b><?php echo number_format($wb5, 2) ?></b></a></td>			  
 				  <td class="cl2" style="background-color: #faf5fc;"><a href="wb_report_pdf.php?year_id=4" target="_blank"><b><?php echo number_format($wb_row_total, 2) ?></b></a></td>
 				</tr>
 				<tr>
@@ -902,6 +993,7 @@ $col4 = $gob_row_total + $wb_row_total;
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="gob_report_pdf.php?year_id=2" target="_blank"><b><?php if ($gob2 <= 0) echo  "--"; else echo number_format($gob2, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="gob_report_pdf.php?year_id=3" target="_blank"><b><?php if ($gob3 <= 0) echo  "--"; else echo number_format($gob3, 2); ?></b></a></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="gob_report_pdf.php?year_id=5" target="_blank"><b><?php if ($gob4 <= 0) echo  "--"; else echo number_format($gob4, 2); ?></b></a></td>
+				  <td class="cl2" style="background-color: #f2ebf5;"><a href="gob_report_pdf.php?year_id=7" target="_blank"><b></b></a></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><a href="gob_report_pdf.php?year_id=4" target="_blank"><b><?php if ($gob_row_total <= 0) echo  "--"; else echo number_format($gob_row_total, 2); ?></b></a></td>
 				</tr>
 			    <tr>
@@ -911,6 +1003,7 @@ $col4 = $gob_row_total + $wb_row_total;
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wbgob_report_pdf.php?year_id=2" target="_blank"><b><?php echo number_format($col2, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wbgob_report_pdf.php?year_id=3" target="_blank"><b><?php echo number_format($col3, 2) ?></b></a></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wbgob_report_pdf.php?year_id=5" target="_blank"><b><?php echo number_format($col4a, 2) ?></b></a></td>
+				  <td class="cl2" style="background-color: #ffe6e6;"><a href="wbgob_report_pdf.php?year_id=7" target="_blank"><b></b></a></td>
 				  <td class="cl2" style="background-color: #f542d1; color: white;"><a style="color: white;" href="wbgob_report_pdf.php?year_id=4" target="_blank"><b><?php echo number_format($col4, 2) ?></b></a></td>
 				</tr>
 			</tbody>
@@ -1506,6 +1599,7 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <th class="cl4" style="background-color: #d48104; color: white;"><b>2023-24</b></th>
 				  <th class="cl4" style="background-color: #d48104; color: white;"><b>2024-25</b></th>
 				  <th class="cl4" style="background-color: #d48104; color: white;"><b>2025-26</b></th>
+				  <th class="cl4" style="background-color: #d48104; color: white;"><b>2026-27</b></th>
 				  <th class="cl4" style="background-color: #d48104; color: white;"><b>Total</b></th>
 				</tr>
 			</thead>		  
@@ -1517,6 +1611,7 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=3&exp_group=1" target="_blank"><b><?php echo number_format($item_1_4, 2) ?></b></td>
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=4&exp_group=1" target="_blank"><b><?php echo number_format($item_1_5, 2) ?></b></td>
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=1" target="_blank"><b><?php echo number_format($item_1_6, 2) ?></b></td>	
+				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=1" target="_blank"><b></b></td>	
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=6&exp_group=1" target="_blank"><b><?php echo number_format($item_1_total, 2) ?></b></td>
 				</tr>
 				<tr>
@@ -1526,6 +1621,7 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=3&exp_group=2" target="_blank"><b><?php echo number_format($item_2_4, 2); ?></b></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=4&exp_group=2" target="_blank"><b><?php echo number_format($item_2_5, 2) ?></b></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=2" target="_blank"><b><?php echo number_format($item_2_6, 2); ?></b></td>
+				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=2" target="_blank"><b></b></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=6&exp_group=2" target="_blank"><b><?php echo number_format($item_2_total, 2) ?></b></td>
 				</tr>
 				<tr>
@@ -1534,7 +1630,8 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=2&exp_group=3" target="_blank"><b><?php echo number_format($item_3_3, 2) ?></b></td>
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=3&exp_group=3" target="_blank"><b><?php echo number_format($item_3_4, 2) ?></b></td>
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=4&exp_group=3" target="_blank"><b><?php echo number_format($item_3_5, 2) ?></b></td>
-				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=3" target="_blank"><b><?php echo number_format($item_3_6, 2) ?></b></td>	 
+				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=3" target="_blank"><b><?php echo number_format($item_3_6, 2) ?></b></td>	
+				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=3" target="_blank"><b></b></td>	
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=6&exp_group=3" target="_blank"><b><?php echo number_format($item_3_total, 2) ?></b></td>
 				</tr>
 				<tr>
@@ -1544,6 +1641,7 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=3&exp_group=4" target="_blank"><b><?php echo number_format($item_4_4, 2) ?></b></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=4&exp_group=4" target="_blank"><b><?php echo number_format($item_4_5, 2) ?></b></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=4" target="_blank"><b><?php echo number_format($item_4_6, 2) ?></b></td>
+				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=4" target="_blank"><b></b></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=6&exp_group=4" target="_blank"><b><?php echo number_format($item_4_total, 2) ?></b></td>
 				</tr>
 				<tr>
@@ -1553,6 +1651,7 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=3&exp_group=5" target="_blank"><b><?php echo number_format($item_5_4, 2) ?></b></td>	  
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=4&exp_group=5" target="_blank"><b><?php echo number_format($item_5_5, 2) ?></b></td>
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=5" target="_blank"><b><?php echo number_format($item_5_6, 2) ?></b></td>	
+				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=5" target="_blank"><b></b></td>	
 				  <td class="cl4" style="background-color: #faf5fc;"><a href="nondli_group_report_pdf.php?year_id=6&exp_group=5" target="_blank"><b><?php echo number_format($item_5_total, 2) ?></b></td>
 				</tr>
 				<tr>
@@ -1561,11 +1660,12 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=2&exp_group=6" target="_blank"><b><?php echo number_format($item_6_3, 2) ?></b></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=3&exp_group=6" target="_blank"><b><?php echo number_format($item_6_4, 2) ?></b></td>	  
 				   <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=4&exp_group=6" target="_blank"><b><?php echo number_format($item_6_5, 2) ?></b></td>
-				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=6" target="_blank"><b><?php echo number_format($item_6_6, 2) ?></b></td>	  
+				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=6" target="_blank"><b><?php echo number_format($item_6_6, 2) ?></b></td>	 
+				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=5&exp_group=6" target="_blank"><b></b></td>	 
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="nondli_group_report_pdf.php?year_id=6&exp_group=6" target="_blank"><b><?php echo number_format($item_6_total, 2) ?></b></td>
 				</tr>
 				<tr>
-				  <td class="cl3" style="background-color: #f4f5f2;" colspan="7"><b>g) Grants under Part 3.2(b)</b></td>
+				  <td class="cl3" style="background-color: #f4f5f2;" colspan="8"><b>g) Grants under Part 3.2(b)</b></td>
 				  
 				</tr>
 				<tr>
@@ -1575,6 +1675,7 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <td class="cl4" style="background-color: #faf5fc;"><b><?php if ($item_7_4 <= 0) echo  "--"; else echo number_format($item_7_4, 2); ?></b></td>
 				  <td class="cl4" style="background-color: #faf5fc;"><b><?php if ($item_7_5 <= 0) echo  "--"; else echo number_format($item_7_5, 2); ?></b></td>
 				  <td class="cl4" style="background-color: #faf5fc;"><b><?php if ($item_7_6 <= 0) echo  "--"; else echo number_format($item_7_6, 2); ?></b></td>
+				  <td class="cl4" style="background-color: #faf5fc;"><b></b></td>
 				  <td class="cl4" style="background-color: #faf5fc;"><b><?php if ($item_7_total <= 0) echo  "--"; else echo number_format($item_7_total, 2); ?></b></td>
 				</tr>
 				<tr>
@@ -1583,7 +1684,8 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <td class="cl4" style="background-color: #f2ebf5;"><b><?php if ($item_8_3 <= 0) echo  "--"; else echo number_format($item_8_3, 2); ?></b></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><b><?php if ($item_8_4 <= 0) echo  "--"; else echo number_format($item_8_4, 2); ?></b></td>	
 				  <td class="cl4" style="background-color: #f2ebf5;"><b><?php if ($item_8_5 <= 0) echo  "--"; else echo number_format($item_8_5, 2); ?></b></td>
-				  <td class="cl4" style="background-color: #f2ebf5;"><b><?php if ($item_8_6 <= 0) echo  "--"; else echo number_format($item_8_6, 2); ?></b></td>	
+				  <td class="cl4" style="background-color: #f2ebf5;"><b><?php if ($item_8_6 <= 0) echo  "--"; else echo number_format($item_8_6, 2); ?></b></td>
+				  <td class="cl4" style="background-color: #f2ebf5;"><b></b></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><b><?php if ($item_8_total <= 0) echo  "--"; else echo number_format($item_8_total, 2); ?></b></td>
 				</tr>
 				<tr>
@@ -1593,6 +1695,7 @@ $col_6_total = $col_1_total + $col_2_total + $col_3_total + $col_4_total + $col_
 				  <td class="cl4" style="background-color: #ffe6e6;"><a href="nondli_report_pdf.php?year_id=2" target="_blank"><b><?php echo number_format($col_3_total, 2) ?></b></a></td>
 				  <td class="cl4" style="background-color: #ffe6e6;"><a href="nondli_report_pdf.php?year_id=3" target="_blank"><b><?php echo number_format($col_4_total, 2) ?></b></a></td>
 				  <td class="cl4" style="background-color: #ffe6e6;"><a href="nondli_report_pdf.php?year_id=6" target="_blank"><b><?php echo number_format($col_5_total, 2) ?></b></a></td>
+				  <td class="cl4" style="background-color: #ffe6e6;"><a href="nondli_report_pdf.php?year_id=4" target="_blank"><b></b></a></td>
 				  <td class="cl4" style="background-color: #ffe6e6;"><a href="nondli_report_pdf.php?year_id=4" target="_blank"><b><?php echo number_format($col_6_total, 2) ?></b></a></td>
 				</tr>
 			</tbody>
@@ -1698,6 +1801,7 @@ $item_2_total_d = $item_2_2_d + $item_2_3_d + $item_2_4_d + $item_2_5_d + $item_
 				  <th class="cl4" style="background-color: #d48104; color: white;"><b>2023-24</b></th>
 				  <th class="cl4" style="background-color: #d48104; color: white;"><b>2024-25</b></th>
 				  <th class="cl4" style="background-color: #d48104; color: white;"><b>2025-26</b></th>
+				  <th class="cl4" style="background-color: #d48104; color: white;"><b>2026-27</b></th>
 				  <th class="cl4" style="background-color: #d48104; color: white;"><b>Total</b></th>
 				</tr>
 			</thead>		  
@@ -1710,6 +1814,7 @@ $item_2_total_d = $item_2_2_d + $item_2_3_d + $item_2_4_d + $item_2_5_d + $item_
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="dli_group_report_pdf.php?year_id=3&exp_group=2" target="_blank"><b><?php if ($item_2_4_d <= 0) echo  "--"; else echo number_format($item_2_4_d, 2); ?></b></a></td>	
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="dli_group_report_pdf.php?year_id=4&exp_group=2" target="_blank"><b><?php if ($item_2_5_d <= 0) echo  "--"; else echo number_format($item_2_5_d, 2); ?></b></a></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="dli_group_report_pdf.php?year_id=5&exp_group=2" target="_blank"><b><?php if ($item_2_6_d <= 0) echo  "--"; else echo number_format($item_2_6_d, 2); ?></b></a></td>	
+				  <td class="cl2" style="background-color: #faf5fc;"><a href="advances.php?year_id=6&dli_type=Non-DLI" target="_blank"><b></b></a></td>
 				  <td class="cl4" style="background-color: #f2ebf5;"><a href="dli_group_report_pdf.php?year_id=6&exp_group=2" target="_blank"><b><?php if ($item_2_total_d <= 0) echo  "--"; else echo number_format($item_2_total_d, 2); ?></b></a></td>
 				</tr>
 				

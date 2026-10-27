@@ -35,7 +35,8 @@ $stmt = $conn->prepare("
         a.acc_code,
         a.name, SUM(je.dollar) AS dollar,
         journal_date,
-        SUM(jt.amount) AS debit_amount
+        SUM(jt.amount) AS debit_amount,
+        jt.amount
     FROM journal_entries je
     INNER JOIN journal_items jt ON jt.journal_id = je.id
     INNER JOIN account_list a ON a.id = jt.account_id
@@ -59,7 +60,7 @@ $dollarTotal = 0;
 
 while ($row = $result->fetch_assoc()) {
     $sn++;
-    $total += $row['debit_amount'];
+    $total += $row['amount'];
     $dollarTotal += $row['dollar'];
 
     $data .= "
@@ -67,7 +68,7 @@ while ($row = $result->fetch_assoc()) {
         <td style='text-align:center'>{$sn}</td>
         <td style='text-align:center'>{$row['acc_code']}</td>
         <td style='text-align:left'>{$row['name']}</td>
-        <td style='text-align:right'>" . number_format($row['debit_amount'], 2) . "</td>
+        <td style='text-align:right'>" . number_format($row['amount'], 2) . "</td>
         <td style='text-align:right'>" . number_format($row['dollar'], 2) . "</td>
     </tr>";
 }
