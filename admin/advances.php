@@ -63,7 +63,9 @@ table, th, td {
 	</div>
 	<div class="card-body">
         <div class="container-fluid">
-			<table style ="width: 50%;">
+			<table id="credit_voucher_list"
+       class="table table-bordered table-striped"
+       style="width:100%;">
 				<thead>
 					<tr>
 						<th style="background: #faefe3; text-align: center; width: 10%;">Date</th>
@@ -131,12 +133,22 @@ table, th, td {
 					</tr>
 					<?php endwhile; ?>
 				</tbody>
-				<tr>
-					<td colspan="3" style="background: #faefe3; text-align: left; width: 60%;"><b>Total</b></td>
-					<td style="background: #faefe3; text-align: right; width: 20%;"><b><?= format_num($total) ?></b></td>
-					<td style="background: #faefe3; text-align: right; width: 20%;"><b><?= format_num($total) ?></b></td>
-				</tr>
-			</table>
+				  <tr>
+                    <td colspan="3"
+                        style="background:#faefe3; text-align:left;">
+                        <b>Total</b>
+                    </td>
+
+                    <td style="background:#faefe3; text-align:right;">
+                        <b><?= format_num($total) ?></b>
+                    </td>
+
+                    <td style="background:#faefe3; text-align:right;">
+                        <b><?= format_num($total) ?></b>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 		</div>
 	</div>
 </div>
@@ -156,11 +168,18 @@ table, th, td {
 		})
 		
 		$('.table td,.table th').addClass('py-1 px-2 align-middle')
-		$('.table').dataTable({
-            columnDefs: [
-                { orderable: false, targets: 2 }
-            ],
-        });
+		$('#credit_voucher_list').DataTable({
+			paging: true,
+			pageLength: 10,
+			lengthChange: true,
+			searching: true,
+			ordering: true,
+			info: true,
+			autoWidth: false,
+			columnDefs: [
+				{ orderable: false, targets: [2] }
+			]
+		});
 	})
 	
 	function delete_book($id){
