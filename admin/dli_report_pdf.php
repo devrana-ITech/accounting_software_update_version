@@ -6,7 +6,6 @@ require_once('./../config.php');
 
 require('../vendor/autoload.php');
 
-
 $year=$_REQUEST['year_id'];
 
 If ($year == 1)
@@ -75,7 +74,27 @@ If ($year == 4)
 {
 	$details = $conn->query("SELECT acc_code, name, a.id as aid, ((case when sum(CASE WHEN group_id = 1 THEN jt.amount END) is null then 0 else sum(CASE WHEN group_id = 1 THEN jt.amount END) end) - (case when sum(CASE WHEN group_id = 4 THEN jt.amount END) is null then 0 else sum(CASE WHEN group_id = 4 THEN jt.amount END) end)) as sumamount FROM `journal_entries` je inner join journal_items jt on jt.journal_id = je.id inner join account_list a on a.id = jt.account_id where acc_exp_group = 2 and acc_flag is null and journal_date >= '$start' and journal_date <= '$end' group by a.id order by acc_code ASC");
 } else {
-	$details = $conn->query("SELECT acc_code, name, ((case when sum(CASE WHEN group_id = 1 THEN jt.amount END) is null then 0 else sum(CASE WHEN group_id = 1 THEN jt.amount END) end) - (case when sum(CASE WHEN group_id = 4 THEN jt.amount END) is null then 0 else sum(CASE WHEN group_id = 4 THEN jt.amount END) end)) as sumamount FROM `journal_entries` je inner join journal_items jt on jt.journal_id = je.id inner join account_list a on a.id = jt.account_id where dli_type = 'DLI' and acc_flag is null and journal_date >= '$start' and journal_date <= '$end' group by a.id order by acc_code ASC");
+	// $details = $conn->query("SELECT acc_code, name, ((case when sum(CASE WHEN group_id = 1 THEN jt.amount END) is null then 0 else sum(CASE WHEN group_id = 1 THEN jt.amount END) end) - (case when sum(CASE WHEN group_id = 4 THEN jt.amount END) is null then 0 else sum(CASE WHEN group_id = 4 THEN jt.amount END) end)) as sumamount FROM `journal_entries` je inner join journal_items jt on jt.journal_id = je.id inner join account_list a on a.id = jt.account_id where dli_type = 'DLI' and acc_flag is null and journal_date >= '$start' and journal_date <= '$end' group by a.id order by acc_code ASC");
+	$details = $conn->query("
+    SELECT
+        acc_code,
+        name,
+        a.id AS aid,
+        (
+            COALESCE(SUM(CASE WHEN group_id = 1 THEN jt.amount END), 0)
+            -
+            COALESCE(SUM(CASE WHEN group_id = 4 THEN jt.amount END), 0)
+        ) AS sumamount
+    FROM journal_entries je
+    INNER JOIN journal_items jt ON jt.journal_id = je.id
+    INNER JOIN account_list a ON a.id = jt.account_id
+    WHERE dli_type = 'DLI'
+      AND acc_flag IS NULL
+      AND journal_date >= '$start'
+      AND journal_date <= '$end'
+    GROUP BY a.id
+    ORDER BY acc_code ASC
+");
 }
 
 //ind_noncon_firm_report_pdf.php  p.designation, contract_date .date("d-m-Y", strtotime($row_d['journal_date']))
