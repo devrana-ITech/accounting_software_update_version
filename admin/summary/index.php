@@ -235,7 +235,42 @@ if ($journals->num_rows > 0){
 	}
 }
 
-$nondli_total = $nondli_2 + $nondli_3 + $nondli_4;
+
+
+$journals = $conn->query("SELECT (case when sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) is null then 0 else sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) end) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join account_list al on al.id = jt.account_id WHERE year_id = 5 and (account_id = 51) and journal_type = 'cv' and dli_type = 'Non-DLI';");
+
+$nondli_5 = 0;
+if ($journals->num_rows > 0){
+	while($row = $journals->fetch_assoc()){
+	   if ($row['Crt'] != 0) {
+			$nondli_5 = $nondli_5 + $row['Crt'];
+	   }
+	}
+}
+
+$journals = $conn->query("SELECT (case when sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) is null then 0 else sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) end) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join account_list al on al.id = jt.account_id WHERE year_id = 6 and (account_id = 51) and journal_type = 'cv' and dli_type = 'Non-DLI';");
+
+$nondli_6 = 0;
+if ($journals->num_rows > 0){
+	while($row = $journals->fetch_assoc()){
+	   if ($row['Crt'] != 0) {
+			$nondli_6 = $nondli_6 + $row['Crt'];
+	   }
+	}
+}
+
+$journals = $conn->query("SELECT (case when sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) is null then 0 else sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) end) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join account_list al on al.id = jt.account_id WHERE year_id = 7 and (account_id = 51) and journal_type = 'cv' and dli_type = 'Non-DLI';");
+
+$nondli_7 = 0;
+if ($journals->num_rows > 0){
+	while($row = $journals->fetch_assoc()){
+	   if ($row['Crt'] != 0) {
+			$nondli_7 = $nondli_7 + $row['Crt'];
+	   }
+	}
+}
+
+$nondli_total = $nondli_2 + $nondli_3 + $nondli_4 + $nondli_5 + $nondli_6 + $nondli_7;
 
 
 ////////////D L I
@@ -275,19 +310,58 @@ if ($journals->num_rows > 0){
 	}
 }
 
-$dli_total = $dli_2 + $dli_3 + $dli_4;
+$journals = $conn->query("SELECT (case when sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) is null then 0 else sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) end) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join account_list al on al.id = jt.account_id WHERE year_id = 5 and (account_id = 51) and journal_type = 'cv' and dli_type = 'DLI';");
+
+$dli_5 = 0;
+if ($journals->num_rows > 0){
+	while($row = $journals->fetch_assoc()){
+	   if ($row['Crt'] != 0) {
+			$dli_5 = $dli_5 + $row['Crt'];
+	   }
+	}
+}
+
+$journals = $conn->query("SELECT (case when sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) is null then 0 else sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) end) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join account_list al on al.id = jt.account_id WHERE year_id = 6 and (account_id = 51) and journal_type = 'cv' and dli_type = 'DLI';");
+
+$dli_6 = 0;
+if ($journals->num_rows > 0){
+	while($row = $journals->fetch_assoc()){
+	   if ($row['Crt'] != 0) {
+			$dli_6 = $dli_6 + $row['Crt'];
+	   }
+	}
+}
+
+$journals = $conn->query("SELECT (case when sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) is null then 0 else sum(case when (account_id = 51) and journal_type = 'cv' and group_id = 1 then jt.amount end) end) as Crt from `journal_entries` je inner join `journal_items` jt on je.id = jt.journal_id inner join account_list al on al.id = jt.account_id WHERE year_id = 6 and (account_id = 51) and journal_type = 'cv' and dli_type = 'DLI';");
+
+$dli_7 = 0;
+if ($journals->num_rows > 0){
+	while($row = $journals->fetch_assoc()){
+	   if ($row['Crt'] != 0) {
+			$dli_7 = $dli_7 + $row['Crt'];
+	   }
+	}
+}
+
+$dli_total = $dli_2 + $dli_3 + $dli_4 + $dli_5 + $dli_6 + $dli_7;
 
 $nondli_dli2 = 0;
 $nondli_dli3 = 0;
 $nondli_dli4 = 0;
+$nondli_dli5 = 0;
+$nondli_dli6 = 0;
+$nondli_dli7 = 0;
 
 $grand_total = 0;
 
 $nondli_dli2 = $nondli_2 + $dli_2;
 $nondli_dli3 = $nondli_3 + $dli_3;
 $nondli_dli4 = $nondli_4 + $dli_4;
+$nondli_dli5 = $nondli_5 + $dli_5;
+$nondli_dli6 = $nondli_6 + $dli_6;
+$nondli_dli7 = $nondli_7 + $dli_7;
 
-$grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4;
+$grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4 + $nondli_dli5 + $nondli_dli6 + $nondli_dli7;
 
 ?>
 
@@ -303,6 +377,11 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4;
 				  <th class="cl2" style="background-color: #ffe6e6;"><b>2021-22</b></th>
 				  <th class="cl2" style="background-color: #ffe6e6;"><b>2022-23</b></th>
 				  <th class="cl2" style="background-color: #ffe6e6;"><b>2023-24</b></th>
+
+				  <th class="cl2" style="background-color: #ffe6e6;"><b>2024-25</b></th> 
+				  <th class="cl2" style="background-color: #ffe6e6;"><b>2025-26</b></th>
+				  <th class="cl2" style="background-color: #ffe6e6;"><b>2026-27</b></th>
+
 				  <th class="cl2" style="background-color: #ffe6e6;"><b>Total</b></th>
 				</tr>
 			</thead>		  
@@ -311,7 +390,10 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4;
 				  <td class="cl1" style="background-color: #faf5fc;"><b>Non-DLI</b></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_2, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_3, 2) ?></b></td>
-				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_4, 2) ?></b></td>	  
+				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_4, 2) ?></b></td>	
+				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_5, 2) ?></b></td>	  
+				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_6, 2) ?></b></td>	  
+				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_7, 2) ?></b></td>	 
 				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_total, 2) ?></b></td>
 				</tr>
 				<tr>
@@ -319,6 +401,9 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4;
 				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php if ($dli_2 <= 0) echo  "--"; else echo number_format($dli_2, 2); ?></b></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php if ($dli_3 <= 0) echo  "--"; else echo number_format($dli_3, 2); ?></b></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php if ($dli_4 <= 0) echo  "--"; else echo number_format($dli_4, 2); ?></b></td>
+				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php if ($dli_5 <= 0) echo  "--"; else echo number_format($dli_5, 2); ?></b></td>
+				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php if ($dli_6 <= 0) echo  "--"; else echo number_format($dli_6, 2); ?></b></td>
+				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php if ($dli_7 <= 0) echo  "--"; else echo number_format($dli_7, 2); ?></b></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php if ($dli_total <= 0) echo  "--"; else echo number_format($dli_total, 2); ?></b></td>
 				</tr>
 				<tr>
@@ -326,6 +411,9 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4;
 				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli2, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli3, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli4, 2) ?></b></td>
+				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli5, 2) ?></b></td>
+				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli6, 2) ?></b></td>
+				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli7, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($grand_total, 2) ?></b></td>
 				</tr>
 			</tbody>
@@ -445,6 +533,10 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4;
 				  <th class="cl2" style="background-color: #ffe6e6;"><b>2021-22</b></th>
 				  <th class="cl2" style="background-color: #ffe6e6;"><b>2022-23</b></th>
 				  <th class="cl2" style="background-color: #ffe6e6;"><b>2023-24</b></th>
+
+				  <th class="cl2" style="background-color: #ffe6e6;"><b>2024-25</b></th>
+				  <th class="cl2" style="background-color: #ffe6e6;"><b>2025-26</b></th>
+				  <th class="cl2" style="background-color: #ffe6e6;"><b>2026-27</b></th>
 				  <th class="cl2" style="background-color: #ffe6e6;"><b>Total</b></th>
 				</tr>
 			</thead>		  
@@ -453,7 +545,12 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4;
 				  <td class="cl1" style="background-color: #faf5fc;"><b>Non-DLI</b></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_2, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_3, 2) ?></b></td>
+				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_4, 2) ?></b></td>
+
 				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_4, 2) ?></b></td>	  
+				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_4, 2) ?></b></td>	  
+				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_4, 2) ?></b></td>	 
+
 				  <td class="cl2" style="background-color: #faf5fc;"><b><?php echo number_format($nondli_total, 2) ?></b></td>
 				</tr>
 				<tr>
@@ -461,12 +558,21 @@ $grand_total = $nondli_dli2 + $nondli_dli3 + $nondli_dli4;
 				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php echo number_format($dli_2, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php echo number_format($dli_3, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php echo number_format($dli_4, 2) ?></b></td>
+
+				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php echo number_format($dli_4, 2) ?></b></td>
+				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php echo number_format($dli_4, 2) ?></b></td>
+				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php echo number_format($dli_4, 2) ?></b></td>
+
 				  <td class="cl2" style="background-color: #f2ebf5;"><b><?php echo number_format($dli_total, 2) ?></b></td>
 				</tr>
 				<tr>
 				  <td class="cl1" style="background-color: #ffe6e6;"><b>Total</b></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli2, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli3, 2) ?></b></td>
+				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli4, 2) ?></b></td>
+
+				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli4, 2) ?></b></td>
+				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli4, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($nondli_dli4, 2) ?></b></td>
 				  <td class="cl2" style="background-color: #ffe6e6;"><b><?php echo number_format($grand_total, 2) ?></b></td>
 				</tr>
